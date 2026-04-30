@@ -7,10 +7,9 @@ import { createSnippet, snippetsQueryKeys } from '@/lib/api/snippets';
 import { SnippetInput } from '@/types/snippet';
 import { SnippetForm } from './SnippetForm';
 
-const Modal = dynamic(
-  () => import('../ui/Modal').then((mod) => mod.Modal),
-  { ssr: false },
-);
+const Modal = dynamic(() => import('../ui/Modal').then((mod) => mod.Modal), {
+  ssr: false,
+});
 
 export function CreateSnippetModalRoute() {
   const router = useRouter();

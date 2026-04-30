@@ -12,10 +12,9 @@ import { Snippet, SnippetInput } from '@/types/snippet';
 import { SnippetForm } from './SnippetForm';
 import { SnippetQueryState } from './SnippetQueryState';
 
-const Modal = dynamic(
-  () => import('../ui/Modal').then((mod) => mod.Modal),
-  { ssr: false },
-);
+const Modal = dynamic(() => import('../ui/Modal').then((mod) => mod.Modal), {
+  ssr: false,
+});
 
 export function EditSnippetModalRoute({
   id,

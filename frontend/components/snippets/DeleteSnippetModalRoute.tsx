@@ -5,10 +5,9 @@ import dynamic from 'next/dynamic';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteSnippet, snippetsQueryKeys } from '@/lib/api/snippets';
 
-const Modal = dynamic(
-  () => import('../ui/Modal').then((mod) => mod.Modal),
-  { ssr: false },
-);
+const Modal = dynamic(() => import('../ui/Modal').then((mod) => mod.Modal), {
+  ssr: false,
+});
 
 export function DeleteSnippetModalRoute({ id }: { id: string }) {
   const router = useRouter();

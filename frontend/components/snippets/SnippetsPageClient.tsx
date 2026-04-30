@@ -15,7 +15,7 @@ const LIMIT = 12;
 
 export function SnippetsPageClient() {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() || '/';
   const searchParams = useSearchParams();
 
   const page = getSearchParamPositiveNumber(searchParams.get('page'), 1);
@@ -32,17 +32,6 @@ export function SnippetsPageClient() {
   const isEmpty =
     listQuery.isSuccess && (!listData || listData.items.length === 0);
   const isUpdatingResults = listQuery.isFetching && hasData;
-
-  const updateSearch = (updates: Record<string, string>) => {
-    const next = new URLSearchParams(searchParams.toString());
-    Object.entries(updates).forEach(([key, value]) => {
-      if (!value) next.delete(key);
-      else next.set(key, value);
-    });
-    if (updates.page === undefined) next.delete('page');
-    const queryString = next.toString();
-    router.push(queryString ? `${pathname}?${queryString}` : pathname);
-  };
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8">
@@ -77,9 +66,9 @@ export function SnippetsPageClient() {
               <Pagination
                 page={listData.page}
                 totalPages={listData.totalPages}
-                onPageChange={(nextPage) =>
-                  updateSearch({ page: String(nextPage) })
-                }
+                pathname={pathname}
+                q={q}
+                tag={tag}
               />
               {isUpdatingResults && (
                 <span className="animate-pulse text-xs text-slate-500">
