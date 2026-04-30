@@ -8,7 +8,7 @@ Repository with two apps:
 ## Project structure
 
 ```text
-snippetVaultBackEnd/
+snippetVault/
   backend/
   frontend/
   README.md

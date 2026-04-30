@@ -17,8 +17,8 @@ export function HeaderSearchFilters({
   className,
   initialTagOptions = [],
 }: HeaderSearchFiltersProps) {
-  const { updateFilters } = useSnippetFilters();
   const searchParams = useSearchParams();
+  const { updateFilters } = useSnippetFilters();
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const queryInputRef = useRef<HTMLInputElement | null>(null);
   const tagSelectRef = useRef<HTMLSelectElement | null>(null);
@@ -47,7 +47,7 @@ export function HeaderSearchFilters({
     if (tagSelectRef.current && tagSelectRef.current.value !== nextTag) {
       tagSelectRef.current.value = nextTag;
     }
-  }, [searchParams, tagsQuery.data]);
+  }, [searchParams]);
 
   const applyFilters = (form: HTMLFormElement) => {
     const queryInput = form.elements.namedItem('q') as HTMLInputElement | null;
@@ -86,7 +86,7 @@ export function HeaderSearchFilters({
           ref={queryInputRef}
           name="q"
           type="search"
-          defaultValue={getSearchParamString(searchParams.get('q'))}
+          defaultValue=""
           onChange={onSearchInputChange}
           className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-slate-500"
           placeholder="Search by title or content"
@@ -94,7 +94,7 @@ export function HeaderSearchFilters({
         <select
           ref={tagSelectRef}
           name="tag"
-          defaultValue={getSearchParamString(searchParams.get('tag'))}
+          defaultValue=""
           onChange={onTagChange}
           className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-slate-500"
         >

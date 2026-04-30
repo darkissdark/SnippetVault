@@ -1,7 +1,6 @@
-'use client';
-
+import { Suspense } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { CreateSnippetButton } from './CreateSnippetButton';
 import { HeaderSearchFilters } from './HeaderSearchFilters';
 
 export function AppHeader({
@@ -9,11 +8,8 @@ export function AppHeader({
 }: {
   initialTagOptions: string[];
 }) {
-  const searchParams = useSearchParams();
-  const queryString = searchParams.toString();
-  const createSnippetHref = queryString
-    ? `/snippets/new?${queryString}`
-    : '/snippets/new';
+  const filtersClassName =
+    'order-3 col-span-2 grid gap-2 md:order-2 md:col-span-1 md:grid-cols-[1fr_auto]';
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
@@ -30,23 +26,36 @@ export function AppHeader({
           </span>
         </Link>
 
-        <Link
-          href={createSnippetHref}
-          className="order-2 inline-flex items-center justify-center gap-2 rounded-md bg-emerald-600 px-3 py-2 text-center text-sm font-medium text-white hover:bg-emerald-700 md:order-3"
+        <Suspense
+          fallback={
+            <Link
+              href="/snippets/new"
+              className="order-2 inline-flex items-center justify-center gap-2 rounded-md bg-emerald-600 px-3 py-2 text-center text-sm font-medium text-white hover:bg-emerald-700 md:order-3"
+            >
+              <span
+                aria-hidden="true"
+                className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-base leading-none"
+              >
+                +
+              </span>
+              Create snippet
+            </Link>
+          }
         >
-          <span
-            aria-hidden="true"
-            className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-base leading-none"
-          >
-            +
-          </span>
-          Create snippet
-        </Link>
-
-        <HeaderSearchFilters
-          initialTagOptions={initialTagOptions}
-          className="order-3 col-span-2 grid gap-2 md:order-2 md:col-span-1 md:grid-cols-[1fr_auto]"
-        />
+          <CreateSnippetButton />
+        </Suspense>
+        <Suspense
+          fallback={
+            <div className={filtersClassName}>
+              <div className="h-10 rounded-md bg-slate-100" />
+            </div>
+          }
+        >
+          <HeaderSearchFilters
+            initialTagOptions={initialTagOptions}
+            className={filtersClassName}
+          />
+        </Suspense>
       </div>
     </header>
   );
