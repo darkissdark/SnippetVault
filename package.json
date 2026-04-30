@@ -1,0 +1,12 @@
+{
+  "name": "snippet-vault-monorepo",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

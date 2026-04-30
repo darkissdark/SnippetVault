@@ -1,0 +1,4 @@
+export const SNIPPET_LIMITS = {
+  PREVIEW_CHARS: 200,
+  DEBOUNCE_SEARCH_MS: 350,
+} as const;
