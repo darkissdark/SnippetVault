@@ -36,7 +36,7 @@ export function SnippetsPageClient() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8">
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold text-slate-900">Snippets</h2>
+        <h1 className="text-xl font-semibold text-slate-900">Snippets</h1>
 
         {listQuery.isLoading && !hasData && (
           <StatusState variant="loading" message="Loading snippets..." />

@@ -109,7 +109,6 @@ export function Pagination({
               <span
                 className={`${pageControlBase} ${pageControlActive}`}
                 aria-current="page"
-                aria-label={`Page ${item}, current page`}
               >
                 {item}
               </span>
