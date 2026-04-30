@@ -82,7 +82,11 @@ export function HeaderSearchFilters({
   return (
     <div className={className}>
       <form className="grid gap-2 md:grid-cols-[1fr_220px]">
+        <label htmlFor="header-search-q" className="sr-only">
+          Search snippets
+        </label>
         <input
+          id="header-search-q"
           ref={queryInputRef}
           name="q"
           type="search"
@@ -91,7 +95,11 @@ export function HeaderSearchFilters({
           className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-slate-500"
           placeholder="Search by title or content"
         />
+        <label htmlFor="header-search-tag" className="sr-only">
+          Filter by tag
+        </label>
         <select
+          id="header-search-tag"
           ref={tagSelectRef}
           name="tag"
           defaultValue=""
