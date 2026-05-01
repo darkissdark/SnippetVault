@@ -118,6 +118,7 @@ npm run start
 
 ## 6) Future Improvements (To-Do)
 
-[ ] Improve search relevance and accuracy for better user interaction.
-[ ] Add basic e2e tests.
-[ ] Refine and improve UI/UX.
+- Improve search relevance and accuracy
+  for better user interaction.
+- Add basic e2e tests.
+- Refine and improve UI/UX.
