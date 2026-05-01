@@ -112,5 +112,12 @@ npm run start
 
 ## 5) Deployment links
 
-- Frontend: `not deployed yet`
-- Backend: `not deployed yet`
+- Frontend: [snippet-vault-eta.vercel.app](https://snippet-vault-eta.vercel.app)
+- Backend API: [snippetvault-6dil.onrender.com](https://snippetvault-6dil.onrender.com/)
+- Backend Swagger: [snippetvault-6dil.onrender.com/api-docs](https://snippetvault-6dil.onrender.com/api-docs)
+
+## 6) Future Improvements (To-Do)
+
+[ ] Improve search relevance and accuracy for better user interaction.
+[ ] Add basic e2e tests.
+[ ] Refine and improve UI/UX.
